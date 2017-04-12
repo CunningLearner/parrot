@@ -39,8 +39,9 @@ restService.post('/hook', function (req, res) {
 
         if (req.body) {
             var requestBody = req.body;
-		if(request.result.resolveQuery != "sensor"){
+		
 	    	    speed = requestBody.result.resolvedQuery;
+		if(speed != "sensor"){
 
 		    fs.writeFile("test", speed, function(err) {
     			if(err) {

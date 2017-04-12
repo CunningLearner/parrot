@@ -40,10 +40,11 @@ restService.post('/hook', function (req, res) {
         if (req.body) {
             var requestBody = req.body;
 		
-	    	    speed = requestBody.result.resolvedQuery;
+	    	    
 		
 
 if (requestBody.result) {
+	speed = requestBody.result.resolvedQuery;
                 speech = '';
 
                 if (requestBody.result.fulfillment) {

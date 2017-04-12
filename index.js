@@ -18,12 +18,12 @@ client.on('message', function (topic, message) {
   if (topic == 'apiai/sreading') {
   var sensoread = message.toString()
   console.log(message.toString())
-  fs.writeFile("test", sensoread, function(err) {
-    if(err) {
-        return console.log(err);
-    }
+ // fs.writeFile("test", sensoread, function(err) {
+   // if(err) {
+     //   return console.log(err);
+    //}
 //console.log("The file was saved!");
-});
+//});
 }
 })
 const restService = express();
@@ -41,15 +41,7 @@ restService.post('/hook', function (req, res) {
             var requestBody = req.body;
 		
 	    	    speed = requestBody.result.resolvedQuery;
-		if(speed != "sensor"){
-
-		    fs.writeFile("test", speed, function(err) {
-    			if(err) {
-       		     	    return console.log(err);
-    			}
-			});
-
-}
+		
 
 if (requestBody.result) {
                 speech = '';
@@ -70,6 +62,15 @@ if (requestBody.result) {
         console.log('result: ', speech);
 		client.publish('apiai/ireading', speech)
 		//console.log("rest in peace")
+	    if(speed != "sensor"){
+
+		    fs.writeFile("test", speed, function(err) {
+    			if(err) {
+       		     	    return console.log(err);
+    			}
+			});
+
+}
 		fs.readFile('test','utf8', function(err, contents) {
 					console.log("The content of the file"+contents);
 //});

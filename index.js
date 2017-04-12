@@ -44,17 +44,17 @@ restService.post('/hook', function (req, res) {
 		
 
 if (requestBody.result) {
-	speed = requestBody.result.resolvedQuery;
-                speech = '';
+	var speed = requestBody.result.resolvedQuery;
+               // speech = '';
 
-                if (requestBody.result.fulfillment) {
-                    speech += requestBody.result.fulfillment.speech;
-                    speech += ' ';
-                }
+//                 if (requestBody.result.fulfillment) {
+//                     speech += requestBody.result.fulfillment.speech;
+//                     speech += ' ';
+//                 }
 
-                if (requestBody.result.action) {
-                    speech += 'action: ' + requestBody.result.action;
-                }
+//                 if (requestBody.result.action) {
+//                     speech += 'action: ' + requestBody.result.action;
+//                 }
             }
 
 

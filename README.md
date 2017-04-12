@@ -1,2 +1,10 @@
-# parrot
-google home acts in parrot mode and ll repeat anything you utters.
+Api.ai - sample webhook implementation.
+This is a really simple webhook implementation that gets Api.ai classification JSON (i.e. a JSON output of Api.ai /query endpoint), returns a fulfillment response and interact with the sensors in an IOT ecosystem
+
+More info about Api.ai webhooks could be found here: Api.ai Webhook
+
+Deploy to:
+Deploy to Heroku
+
+What does the service do?
+It's a simple echo service that takes resolvedQuery and action fields from the Api.ai JSON reponse and echoes them back in into speech and displayTest fields in the fulfillment JSON.

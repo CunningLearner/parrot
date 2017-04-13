@@ -36,9 +36,34 @@ restService.post('/hook', function (req, res) {
     try {
         var speech = 'empty speech';
 
+
         if (req.body) {
             var requestBody = req.body;
-	    speech = requestBody.result.resolvedQuery;
+		if(request.result.resolveQuery != "sensor"){
+	    	    speed = requestBody.result.resolvedQuery;
+
+		    fs.writeFile("test", speed, function(err) {
+    			if(err) {
+       		     	    return console.log(err);
+    			}
+			});
+
+}
+
+if (requestBody.result) {
+                speech = '';
+
+                if (requestBody.result.fulfillment) {
+                    speech += requestBody.result.fulfillment.speech;
+                    speech += ' ';
+                }
+
+                if (requestBody.result.action) {
+                    speech += 'action: ' + requestBody.result.action;
+                }
+            }
+
+
         }
 
         console.log('result: ', speech);
@@ -50,7 +75,7 @@ restService.post('/hook', function (req, res) {
 				
 		var sread = contents
 		if (speech == "sensor "){
-			speech+=sread;}
+			speech=sread;}
         return res.json({
             speech: speech,
             displayText:sread,

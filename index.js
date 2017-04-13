@@ -35,6 +35,7 @@ restService.post('/hook', function (req, res) {
 
     try {
         var speech = 'empty speech';
+	var speed = 'empty speed';
 
 
         if (req.body) {
@@ -44,17 +45,18 @@ restService.post('/hook', function (req, res) {
 		
 
 if (requestBody.result) {
-	var speed = requestBody.result.resolvedQuery;
-               // speech = '';
+	 speed = requestBody.result.resolvedQuery;
+	 speed += ' ';
+                speech = '';
 
-//                 if (requestBody.result.fulfillment) {
-//                     speech += requestBody.result.fulfillment.speech;
-//                     speech += ' ';
-//                 }
+                if (requestBody.result.fulfillment) {
+                    speech += requestBody.result.fulfillment.speech;
+                    speech += ' ';
+                }
 
-//                 if (requestBody.result.action) {
-//                     speech += 'action: ' + requestBody.result.action;
-//                 }
+                if (requestBody.result.action) {
+                    speech += 'action: ' + requestBody.result.action;
+                }
             }
 
 
@@ -63,7 +65,7 @@ if (requestBody.result) {
         console.log('result: ', speech);
 		client.publish('apiai/ireading', speech)
 		//console.log("rest in peace")
-	    if(speed != "sensor"){
+	    if(speed != "sensor "){
 
 		    fs.writeFile("test", speed, function(err) {
     			if(err) {
